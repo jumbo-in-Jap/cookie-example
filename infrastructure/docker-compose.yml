@@ -1,0 +1,39 @@
+version: "3.8"
+volumes:
+  db-store:
+  php-fpm-socket:
+services:
+
+  php:
+    container_name: php
+    build: ./docker/php
+    volumes:
+      - php-fpm-socket:/var/run/php-fpm
+      - ../src/yii:/work/backend
+
+  nginx:
+    container_name: nginx
+    build: ./docker/nginx
+    ports:
+      - 80:80
+    volumes:
+      - php-fpm-socket:/var/run/php-fpm
+      - ../src/yii:/work/backend
+
+  nuxt:
+    container_name: nuxt
+    build:
+      context: ./docker/nuxt
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - ../src/nuxt:/src:cached
+      # exclude volumes
+      - /src/app/node_modules
+    tty: true
+    stdin_open: true
+    # Hot Module Replacement (HMR) is enable for virtual box.
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+
