@@ -36,7 +36,7 @@ WORKDIR /src/app
 
 # ↓ここから下は後で、コメントアウトを解除します
 ## install packages.
-RUN yarn install
+# RUN yarn install
 
 EXPOSE 3000
-CMD ["yarn", "run", "dev"]
+# CMD ["yarn", "run", "dev"]

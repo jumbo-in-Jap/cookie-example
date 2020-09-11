@@ -11,14 +11,24 @@ services:
       - php-fpm-socket:/var/run/php-fpm
       - ../src/yii:/work/backend
 
-  nginx:
-    container_name: nginx
-    build: ./docker/nginx
+  nginx-php:
+    container_name: nginx-php
+    build: ./docker/nginx-php
     ports:
-      - 80:80
+      - 9000:80
     volumes:
       - php-fpm-socket:/var/run/php-fpm
       - ../src/yii:/work/backend
+      - ./docker/nginx-php/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+
+  nginx-proxy:
+    container_name: nginx-proxy
+    build: ./docker/nginx-proxy
+    ports:
+      - 80:80
+    volumes:
+      - ./docker/nginx-proxy/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+    
 
   nuxt:
     container_name: nuxt
