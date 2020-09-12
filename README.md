@@ -4,14 +4,16 @@ this is sample app about cookie based handle.
 
 # requirements
 
-proxy: http://localhost
-yii: http://localhost:9000/
-nuxt: http://localhost:3000/
+- proxy: http://localhost
+- yii: http://localhost:9000/
+- nuxt: http://localhost:3000/
 
 nginxをALBに見立ててCookieでの特定のURLの振り分けをする
 
+```
 -> http://localhost/test -(Cookieなし)-> yii(localhost:9000)
 -> http://localhost/test -(Cookieあり)-> nuxt(localhost:3000)
+```
 
 # nginx setting
 
