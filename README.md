@@ -19,16 +19,16 @@ nginxをALBに見立ててCookieでの特定のURLの振り分けをする
 
 ```
 upstream default_app {
-    server host.docker.internal:9000;
+    server host.docker.internal:9000; # 旧アプリケーション：Yii
 }
 
 upstream new_app {
-    server host.docker.internal:3000;
+    server host.docker.internal:3000; # 新アプリケーション : Nuxt
 }
 
 map $cookie_target $server {        # "$cookie_" の後にクッキー名を書く。
-    testing new_app;                            # "1"のときはupstream new_appを利用
-    default default_app;                        # どれにも該当しないときはupstream defaultを利用
+    testing new_app;                # "1"のときはupstream new_appを利用
+    default default_app;            # どれにも該当しないときはupstream defaultを利用
 }
 
 ...
