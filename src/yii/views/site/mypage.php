@@ -9,6 +9,6 @@ $this->title = 'Cookie reverse proxy Example';
 <div class="site-index">
 
     <div class="jumbotron">
-        <h1>Contact</h1>
+        <h1>MyPage</h1>
     </div>
 </div>
