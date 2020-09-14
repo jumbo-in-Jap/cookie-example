@@ -7,6 +7,7 @@ $this->title = 'Cookie reverse proxy Example';
 <script>
     function onClickCokie(){
         document.cookie = 'target=testing';
+        location.reload();
     }
 </script>
 <div class="site-index">
