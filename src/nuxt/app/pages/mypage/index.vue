@@ -5,6 +5,7 @@
       <h1 class="title">
         MyPage
       </h1>
+      <h1 v-if="this.hasCookie">Has `target` Cookie!</h1>
     </div>
   </section>
 </template>
@@ -15,7 +16,15 @@ import AppLogo from '~/components/AppLogo.vue'
 export default {
   components: {
     AppLogo
-  }
+  },
+  data() {
+    return {
+      hasCookie: false
+    }
+  },
+  mounted() {
+    this.hasCookie = document.cookie.includes("target")    
+  },
 }
 </script>
 
