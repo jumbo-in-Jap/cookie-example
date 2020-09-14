@@ -15,6 +15,15 @@ nginxをALBに見立ててCookieでの特定のURLの振り分けをする
 -> http://localhost/test -(Cookieあり)-> nuxt(localhost:3000)
 ```
 
+# setup
+
+```
+docker-compose up -d
+docker-compose exec -T php composer install
+docker-compose exec -T nuxt npm i
+docker-compose exec -T nuxt npm run dev
+```
+
 # nginx setting
 
 ```
