@@ -53,3 +53,13 @@ location / {
 }
 
 ```
+
+# yii上でnuxtを動かす
+
+- v12.10.0
+- nuxtで3ページ作る
+    - /sample1
+    - /sample2
+- generateフォルダをyiiに異動
+- 期待する動きとして指定したyiiのアプリケーションへのアクセスはok、nuxtのルーティングも動く
+- 
